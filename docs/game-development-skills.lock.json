@@ -1,0 +1,348 @@
+{
+  "repository": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+  "license": "Apache-2.0",
+  "skills": [
+    {
+      "sourcePath": "skills/godot/godot-gdscript",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-gdscript",
+      "name": "godot-gdscript",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "9039fb6de0980495fbc77fb87aae22256d92e7b5cca558b9e318b53dbf557459"
+        },
+        {
+          "path": "references/annotations-and-typing.md",
+          "sha256": "b905cae5114ecbbba2cac14ad49b05a2c252535a670f5a1d701b41def3a90f78"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-nodes-scenes",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-nodes-scenes",
+      "name": "godot-nodes-scenes",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "fc0096a774a8581678180ed0e71039eea52533411b4b45dee708ebad10c920af"
+        },
+        {
+          "path": "references/tree-and-instancing.md",
+          "sha256": "be3c86180bd18dd46bfdfd7a47317bdb50fc6942cfc3e3d7342b4d0f7834b7a4"
+        },
+        {
+          "path": "scripts/check_godot_project.py",
+          "sha256": "779b2130ce00c9566b6a1972dc49916bc270922e1df7fb705a93cc0d5053ef85"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-signals-groups",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-signals-groups",
+      "name": "godot-signals-groups",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "eccc8d79a708eff3ff2b1f108baaf8bf3bf3c39e73e396973ea605a6a1190784"
+        },
+        {
+          "path": "references/signal-patterns.md",
+          "sha256": "7f28a8fccf5aef6029e85d2ee8817dcb4d58c0344744f1a421f059ed61fbab4d"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-2d-movement",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-2d-movement",
+      "name": "godot-2d-movement",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "ea396576540acb85f0ca2050a96cfa6399a03668971bb320ef612e52a32c8f0a"
+        },
+        {
+          "path": "references/controller-recipes.md",
+          "sha256": "bcf89d3e8a820d75a78ed32eaa8eaf20c01ea1a8154791f58a8e3546d6fb0fba"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-tilemap",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-tilemap",
+      "name": "godot-tilemap",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "c92a7103c764963a4d065a637941bb537f2409e54277d05aa05ea2bf8fc75971"
+        },
+        {
+          "path": "references/tileset-and-terrains.md",
+          "sha256": "c2486c7bacdd3f099d981f50b1aa881a7647bb14112b343370f76e1753d12ed8"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-ui-control",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-ui-control",
+      "name": "godot-ui-control",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "0b2cc92d670cc2274f6579748a1703ec6a2bf70dc3d2875985deea1018f05bdc"
+        },
+        {
+          "path": "references/layout-and-theming.md",
+          "sha256": "5f54eed206cd7d7f5fecffd2ce1c189739eba5b5e18b2d1773f9ba7202427f66"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-animation",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-animation",
+      "name": "godot-animation",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "43a339c8445b804ba84c32889ec9e4ca80e323003df74a35bcf4d3a7c8e9e99b"
+        },
+        {
+          "path": "references/animation-tree-and-tween.md",
+          "sha256": "488900f895505dc6190b6e3626a4367c841dfda6ed288de8cf68a9891775c159"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-audio",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-audio",
+      "name": "godot-audio",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "9ed39d72403eef39e2cbedb1015262ee8413f4f71c91734ba25f82eece839b5b"
+        },
+        {
+          "path": "references/buses-and-effects.md",
+          "sha256": "f84f5c91fc78631670315b4c63643603841ad1ca1f211a7891c8bc408f8c3e80"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-physics",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-physics",
+      "name": "godot-physics",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "e318719b45091bc2731eb2ebd256027f23f7f50a39b06eb7047608cf8426b297"
+        },
+        {
+          "path": "references/bodies-and-queries.md",
+          "sha256": "5d1616f73d9f0161df501cbcb1bdbbc3c4b8c2abb687172e1d02a5d5e7907223"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-resources",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-resources",
+      "name": "godot-resources",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "1c89eb8eaef4ac889c21640822d454d41a9017e4ca205d4044b73d5fd017aa13"
+        },
+        {
+          "path": "references/resource-patterns.md",
+          "sha256": "a848b0be5d5d78307ffa8a91152ffb3b03204cd742a3edd289e03873aab77425"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-export",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-export",
+      "name": "godot-export",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "473552185df50d5ab4a2ef874f47e08ffd7f6f552e191a7a5922c288b29800a6"
+        },
+        {
+          "path": "references/presets-and-cli.md",
+          "sha256": "ab2388a1870a0b813d110066bb54bad9f3787d067d13043d10944baec5b13dc1"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/godot/godot-gdscript-headless-testing",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\godot-gdscript-headless-testing",
+      "name": "godot-gdscript-headless-testing",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "980ecf1815cb179bc92749e419e3d5c87cc998413c57ed87035e34dc45e87034"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/dialogue-systems",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\dialogue-systems",
+      "name": "dialogue-systems",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "8d7576b4d702cc3c3db0abc90b2e5375b73e63d72479ffef73b5797237bde30b"
+        },
+        {
+          "path": "references/ink-and-yarn.md",
+          "sha256": "c43275e04428ad8edb374f83477046a12d525b1535cc286d3f4c8e8e159c991e"
+        },
+        {
+          "path": "references/runner.md",
+          "sha256": "9d70ca1cb7a518170300c06bfb88984230e71ee23ff0b7b225f3355a22cb4fe4"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/save-systems",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\save-systems",
+      "name": "save-systems",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "17a7e580cdb8ee2fe654fe1b2d9ba3066c57ef1ea6a8cd9cc69141ebaea16224"
+        },
+        {
+          "path": "references/versioning-and-migration.md",
+          "sha256": "a95ee265936b5bb332934ae19a90c02c70f927adb3898e5a95ce1877abe9873c"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/create-game-assets",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\create-game-assets",
+      "name": "create-game-assets",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "36cd246a434fefe1e36feff066597a6268d9f63364bee387ee65a22f03838b5d"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "b5ff9e75ab8a845324d28745aa97af0a3cd4fccc56067a6494947e12e40f1990"
+        },
+        {
+          "path": "assets/art-direction-brief.md",
+          "sha256": "6d5dc4f9f5fcb24300bab9ce7dbd56d5c948ba41da3cca2d3b3d235fee5fb72c"
+        },
+        {
+          "path": "assets/asset-manifest.json",
+          "sha256": "6cce05638c11b80eb5c8f776cf187f479a2579f1a1729b0970b1cc8e5fab4c8e"
+        },
+        {
+          "path": "references/art-direction.md",
+          "sha256": "19b2ccb827eae0c6c4cd3648ab7febb82e44706bef8515f2e8912de23dec0a5c"
+        },
+        {
+          "path": "references/provenance.md",
+          "sha256": "098d3cf915cd66e8ff0ad3a639964167edf2280f9e23efbae3ea6242d5bea3db"
+        },
+        {
+          "path": "references/raster-pipeline.md",
+          "sha256": "d7a5714628fd8f4b66d03e060488e353b163b811112b164af218beb2b6450a02"
+        },
+        {
+          "path": "references/three-d-pipeline.md",
+          "sha256": "ee6ed7c373e15ffeb8e6b275618482f028279a8146f01b6cfe6a8411cb8a3db4"
+        },
+        {
+          "path": "scripts/asset_report.py",
+          "sha256": "99f4b38f9c4fe036f97ab1d4effd7f6931b62d24a90330a5a2f5ae71e7d1a77c"
+        },
+        {
+          "path": "scripts/build_preview_sheet.py",
+          "sha256": "002a550a7b5fac6d8815078a72afc249dd828c40d975b2323223fc770118c64b"
+        },
+        {
+          "path": "scripts/requirements.txt",
+          "sha256": "bbced595a25debee9232fbb784d35ee4f04967d3dbc528e8c3073d3e9adbe2ca"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/input-systems",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\input-systems",
+      "name": "input-systems",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "638bd3c07746a09e3945e81c0b9a2ca90c75d2f8a63c0be3c285d75475790b1f"
+        },
+        {
+          "path": "references/buffering-and-accessibility.md",
+          "sha256": "dadd5fc9f7bbe88daeeb506e4e1b447267e232273a08ca32095a78f31aea0d84"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/level-design",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\level-design",
+      "name": "level-design",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "9dd60fec5dc09957f7836739da96b5a2bcff2b46ecaab020f0a9ccff7463ba3a"
+        },
+        {
+          "path": "references/pacing-and-flow.md",
+          "sha256": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/camera-systems",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\camera-systems",
+      "name": "camera-systems",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "419dc9912b1ab007b17df615fc2347158255b63f93000b43b4c4ed1b5605d01e"
+        },
+        {
+          "path": "references/follow-and-framing.md",
+          "sha256": "7664d4ab898e183a41bfe2ded1c71c5e16704575545a711830707df60e3a88fa"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/disciplines/game-ui-ux",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\game-ui-ux",
+      "name": "game-ui-ux",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "54816447c4d07f9ab65782ebb7138dd0927c9cd84a3647e8806f2a86a3a094ff"
+        },
+        {
+          "path": "references/layout-and-flow.md",
+          "sha256": "961fc8c8e45a1ee5120e1deef9f6aef932ae3949e6f1ce26548b9d7616775d73"
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/genres/visual-novel",
+      "installedPath": "C:\\Users\\sophi\\.codex\\skills\\visual-novel",
+      "name": "visual-novel",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "57f703ceaa5f9b3d2741415c1854d1fb00db2d0a92fc1757a279a3b089888086"
+        },
+        {
+          "path": "references/script-and-flow.md",
+          "sha256": "96460289165b387ddd13ab532dde58d8d47709b0afdcb9fc9183fb58cffdac76"
+        }
+      ]
+    }
+  ],
+  "revision": "184b72be02884f782a0058f2eeae2ce4277453e4",
+  "installedOn": "2026-10-27"
+}

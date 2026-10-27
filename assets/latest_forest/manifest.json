@@ -1,0 +1,67 @@
+{
+  "source_size": [
+    8192,
+    4608
+  ],
+  "canvas_size": [
+    2048,
+    1152
+  ],
+  "layers": [
+    {
+      "id": "central_tree",
+      "channel": [
+        1,
+        0,
+        0
+      ],
+      "pivot": [
+        1160,
+        660
+      ],
+      "order": "y"
+    },
+    {
+      "id": "foreground_left",
+      "channel": [
+        0,
+        1,
+        0
+      ],
+      "pivot": [
+        0,
+        1152
+      ],
+      "order": "front"
+    },
+    {
+      "id": "foreground_right",
+      "channel": [
+        0,
+        0,
+        1
+      ],
+      "pivot": [
+        0,
+        1152
+      ],
+      "order": "front"
+    },
+    {
+      "id": "rune_stone",
+      "channel": [
+        1,
+        1,
+        0
+      ],
+      "pivot": [
+        1420,
+        425
+      ],
+      "order": "y"
+    }
+  ],
+  "blender_version": "5.2.3 LTS",
+  "generated_color_used": false,
+  "hidden_surfaces_painted": false
+}

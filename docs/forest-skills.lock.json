@@ -1,0 +1,79 @@
+{
+  "repo": "https://github.com/arjun988/blender-skills",
+  "commit": "8f778d2405a214b508d4c7d80742be8e43acdd52",
+  "verified_date": "2026-10-27",
+  "skills": {
+    "blender-modeler": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/modifier-stack.md": "705b242c0c4f187ef76287a5048f7a28ea7f153c134ca48edcc015af796c900a",
+      "references/scene-organization.md": "fa659b29d4be872918c3cb45bce294e535e99baa6acb27c6bf3829d381cf21e5",
+      "SKILL.md": "00835b5d2281ae056e4bd4b167540a10c39ae95d9a9a4f12828ce875dce8c12c"
+    },
+    "environment-artist": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/composition.md": "422dd5075cf943a3b506fbcd8ae806458f9a0811c14880ee84c9213f50a21277",
+      "references/modular-kits.md": "90cf2c12a88065bb787a6748ce2178a7d73bf02d159aeac0907ece203690bd9b",
+      "SKILL.md": "989c55a26e5db78bf719bfbbe0ba00e0fb1319a4816bce07c08a11472b2cd321"
+    },
+    "hand-painted-style": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/paint-workflow.md": "e1bd3e0cc8c7e64c8702df3f8f582365ffe2d47551a838e3ba166cbbaf1b0cda",
+      "SKILL.md": "fd8c4418c2f3c51ddb494d51a558b935dc6c3de7aa9bf65f45349e4b1aa0022f"
+    },
+    "anime-style": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/anime-proportion.md": "da1491ff6ab873a6b3caf0d61be916d667fc50c5a8cb6f45259c1cf13d13aee1",
+      "references/cel-shader-setup.md": "33358afbcd5a35a5768d206ee84d771369ef6d7542443cc6da652a677cd34c49",
+      "SKILL.md": "db0cd6332505265cca20828f5a4042db8fb5db5751fb3fc020c49b97f31ea74f"
+    },
+    "materials": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/procedural-patterns.md": "e425b825109d850269192b5c6a856c33a422974b94b03c1bf2df256376edeb40",
+      "references/surface-recipes.md": "ca3213fd8943042fc4f32c01912ba3c98e04fd836f074b05d6678f96ffa204e7",
+      "SKILL.md": "fc86c8f2e292791a3bc4f238ae0f2120c52d61b393ef922c55860dd2b78e43b6"
+    },
+    "lighting": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/cinematic-light-rigs.md": "651883fdad2ebba49f12514e01fce10d8e465c047f6e820d3f3a689c23b31e5b",
+      "references/horror-lighting-setups.md": "5b1b4767983ede817e27d63b5c772bf101842618d9cb4f023a4bf73561250c90",
+      "SKILL.md": "a9ad1a183a4294c3e87101b63d26303ea499cfe8edc25c3b9a4c73f5e7b34232"
+    },
+    "rendering": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/npr-rendering.md": "9fef29b76905d04dbe5ab905b0073a14465531ef7d750491637d91563c1618ff",
+      "references/render-passes.md": "3bd1590431349b76ccb82a3d3589779baa29b1426c42f900cca19c1332f1a313",
+      "SKILL.md": "abf41a30b17a29cc09efcbecf9e163e7f0d30a2b5d6c2f2700acf85a788deff1"
+    },
+    "compositing": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/delivery-outputs.md": "9376ba656e36b8cf3d9b3ce09bc4ea357d2b4ef918c86ae06269af24938b0d39",
+      "references/grade-presets.md": "b35116d7b8b4d4dfe379fbc7b37ee64b7adc4272a49fe04b7f8ece27261e3183",
+      "references/pass-stack.md": "cd94dee28491713a5b08cf36f119586f77296b7b2f764a190bc530f4dba17e3b",
+      "SKILL.md": "d33e636d269511fb3b4bb5769562ded33533d9d4b2dce7c67b128d6cbe65ddbd"
+    },
+    "pixel-art-style": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/texel-rules.md": "766896b1e93681d63cfa56e2ff2704c90dfb66b752033baccdac1c7e87ebac24",
+      "SKILL.md": "456abb3101ed885ec733ecbdeb9b9834b77d48e3fdb0b13a10e0040d54f15a34"
+    },
+    "camera-cinematography": {
+      "LICENSE": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7",
+      "references/camera-move-library.md": "928db1846e42139845360bc5e6c5f8ec0165445ba15c7a262b01a2e175fcaf5b",
+      "references/dof-guide.md": "4824aa3465476b94ea76070e33c4c0ae7d78065f71b4da88517e6fba38995b29",
+      "references/lens-and-composition.md": "5d706c214dba9fa7f630f5e0634bb9b93ea76a7c77995d2d95d8633006a78375",
+      "SKILL.md": "0838fe51a882af69b47d598b09ef3c921852e498a394d35b793d607826e43ece"
+    }
+  },
+  "shared_references": {
+    "references/asset-pipeline.md": "f395dd0ca860c8021743b96fdb5d04af97d578cdfba3e7b2630cd5a56cfa8d05",
+    "references/mcp-integration.md": "7a57483e961f901d0c0e611163615649b26383a55415c88286f962aa8fd9e29f",
+    "references/mcp-tools.md": "88edc2aef19f075d5566cd13bb74c32968a149bc6462ebffabfe7ed43df5ddfb",
+    "references/naming-conventions.md": "3573b3dfecf813c18821922c62e815d9969a0c68349813769a7c3f526aafb3e5",
+    "references/polycount-budgets.md": "7745680c18fdc83ef06698b590c6af442a604766186a49a14861fa8d487a0a75",
+    "references/reference-analysis-template.md": "757ea985ff38840b2c734d44b4c6cdaed38840271a794b393c2a5e8e950f253c",
+    "references/reference-image-match.md": "3d43bbb8d05c0219a965b033012995efa62d3f6b85fb25dbffe6bdd44f48aa14",
+    "references/validation-checklist.md": "f865c62f1ac66881d67734bd72849d26f81fbeced5bc0bfd1e7b9506a8baf148",
+    "references/visual-match-checklist.md": "6b8e4431a718a314ae80cdb87cdec4b237f6a15b5d5debcbf088b8c685a31b79",
+    "references/LICENSE.blender-skills": "693a17a74eacc8ad849d248356fba7fab357b0bef5c94f783029033ab2d950d7"
+  }
+}
