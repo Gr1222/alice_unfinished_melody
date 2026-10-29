@@ -8,16 +8,16 @@
 	},
 	"sister": {
 		"name": "NAME_SISTER",
-		"portrait": "",
+		"portrait": "res://assets/user_art/sister_portrait.png",
 		"faces": "front",
-		"waist": 0.5,
+		"waist": 0.8,
 		"always_known": true
 	},
 	"rabbit": {
 		"name": "NAME_RABBIT",
-		"portrait": "res://assets/user_art/rabbit_portrait.png",
-		"faces": "left",
-		"waist": 0.6,
+		"portrait": "res://assets/user_art/rabbit_portrait_v2.png",
+		"faces": "right",
+		"waist": 1.0,
 		"always_known": false
 	}
 }

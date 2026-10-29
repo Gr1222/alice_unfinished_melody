@@ -20,6 +20,10 @@ var _config := {}
 var _target_yaw := 0.0
 var _faces := "front"
 var _visual: Node3D
+## directional_sprite 占位：正面/侧面/背面三张贴图（键 front / side / back）与侧面原图朝向。
+var _views := {}
+var _side_faces := "left"
+var _view_offset := Vector2.ZERO
 
 func _ready() -> void:
 	if model_id != "": apply_config(load_config(model_id))
@@ -42,6 +46,7 @@ func apply_config(config: Dictionary) -> void:
 	placeholder = null
 	animation_player = null
 	state = ""
+	_views = {}
 	_config = config
 	_visual = Node3D.new()
 	_visual.name = "Visual"
@@ -74,6 +79,12 @@ func _build_placeholder(spec: Dictionary) -> void:
 	var type := String(spec.get("type", "none"))
 	if type == "none": return
 	var node: Node3D
+	if type == "directional_sprite":
+		_build_directional(spec)
+		return
+	if type == "disc":
+		_build_disc(spec)
+		return
 	if type == "animated_sprite":
 		var animated := AnimatedSprite3D.new()
 		animated.sprite_frames = load(spec["frames"])
@@ -92,6 +103,60 @@ func _build_placeholder(spec: Dictionary) -> void:
 	_faces = String(spec.get("faces", "front"))
 	_visual.add_child(node)
 	placeholder = node
+
+## 地面圆盘占位（兔子洞）：一个贴地的深色圆，radius 为半径（米），color 为颜色。
+func _build_disc(spec: Dictionary) -> void:
+	var mesh := CylinderMesh.new()
+	var radius := float(spec.get("radius", 0.8))
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = 0.02
+	var material := StandardMaterial3D.new()
+	material.albedo_color = Color(spec.get("color", "0b0806"))
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mesh.material = material
+	var node := MeshInstance3D.new()
+	node.name = "Placeholder"
+	node.mesh = mesh
+	node.position.y = 0.03
+	node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_visual.add_child(node)
+	placeholder = node
+
+## 三视图占位：一个 Sprite3D，按朝向（相对镜头）切换正面/侧面/背面贴图，侧面按需翻转。
+func _build_directional(spec: Dictionary) -> void:
+	for view in ["front", "side", "back"]:
+		_views[view] = load(spec[view])
+	_side_faces = String(spec.get("side_faces", "left"))
+	var extra: Array = spec.get("offset", [0, 0])
+	_view_offset = Vector2(extra[0], extra[1])
+	var sprite := Sprite3D.new()
+	_style_sprite(sprite, spec)
+	sprite.name = "Placeholder"
+	_visual.add_child(sprite)
+	placeholder = sprite
+	_show_view(Vector3(0, 0, 1))
+
+## 按世界方向选择视图：朝向镜头 = 正面，背对镜头 = 背面，其余 = 侧面（按左右翻转）。
+func _show_view(direction: Vector3) -> void:
+	var sprite := placeholder as Sprite3D
+	var view := _view_camera()
+	var local := direction
+	if view:
+		local = Vector3(direction.dot(view.global_basis.x), 0, direction.dot(view.global_basis.z))
+	var key := "side"
+	var flip := false
+	if absf(local.x) > absf(local.z):
+		flip = local.x > 0 if _side_faces == "left" else local.x < 0
+	elif local.z >= 0:
+		key = "front"
+	else:
+		key = "back"
+	var texture: Texture2D = _views[key]
+	sprite.texture = texture
+	# 三张图高度略有差别：每次按贴图高度重算 offset，保证底边始终在脚底。
+	sprite.offset = Vector2(_view_offset.x, texture.get_height() * 0.5 + _view_offset.y)
+	sprite.flip_h = flip
 
 func _style_sprite(sprite: SpriteBase3D, spec: Dictionary) -> void:
 	sprite.pixel_size = float(spec.get("pixel_size", 0.01))
@@ -134,6 +199,8 @@ func face_toward(direction: Vector3) -> void:
 	if direction.length_squared() < 0.0001: return
 	if model != null:
 		_target_yaw = atan2(direction.x, direction.z) + deg_to_rad(float(_config.get("yaw_degrees", 0)))
+	elif not _views.is_empty():
+		_show_view(direction)
 	elif placeholder is Sprite3D:
 		var view := _view_camera()
 		if view == null or _faces == "front": return

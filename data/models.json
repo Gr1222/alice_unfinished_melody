@@ -20,11 +20,13 @@
 		"yaw_degrees": 0,
 		"animations": {"idle": "idle", "walk": "walk", "jump": "jump"},
 		"placeholder": {
-			"type": "sprite",
-			"texture": "res://assets/user_art/rabbit_side.png",
-			"pixel_size": 0.01625,
-			"offset": [0, 40],
-			"faces": "left"
+			"type": "directional_sprite",
+			"front": "res://assets/user_art/rabbit_front_v2.png",
+			"side": "res://assets/user_art/rabbit_side_v2.png",
+			"back": "res://assets/user_art/rabbit_back_v2.png",
+			"side_faces": "left",
+			"pixel_size": 0.005,
+			"offset": [0, 0]
 		}
 	},
 	"sister": {
@@ -34,20 +36,21 @@
 		"yaw_degrees": 0,
 		"animations": {"idle": "idle", "walk": "walk", "jump": "jump"},
 		"placeholder": {
-			"type": "sprite",
-			"texture": "res://assets/user_art/alice_front.png",
-			"pixel_size": 0.0205,
-			"offset": [0, 40],
-			"faces": "front",
-			"tint": [0.78, 0.68, 0.95]
+			"type": "directional_sprite",
+			"front": "res://assets/user_art/sister_front.png",
+			"side": "res://assets/user_art/sister_side.png",
+			"back": "res://assets/user_art/sister_back.png",
+			"side_faces": "right",
+			"pixel_size": 0.0028,
+			"offset": [0, 0]
 		}
 	},
 	"rabbit_hole": {
 		"scene": "",
 		"scale": 1.0,
-		"offset": [0, 0, 0],
+		"offset": [0, 0.3, 0],
 		"yaw_degrees": 0,
 		"animations": {"idle": "idle"},
-		"placeholder": {"type": "none"}
+		"placeholder": {"type": "disc", "radius": 0.8, "color": "0b0806"}
 	}
 }

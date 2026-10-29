@@ -56,7 +56,7 @@ func run() -> void:
 	check(not state.can_control(), "对话期间锁定操作")
 	check(box.name_label.text == "？？？", "未知的兔子显示 ？？？")
 	check(box.left_portrait.visible and not box.right_portrait.visible, "独白只在左侧显示立绘")
-	check(box.left_portrait.texture == manager.characters.rabbit.texture and box.left_portrait.flip_h, "兔子独白在左侧并面向中央")
+	check(box.left_portrait.texture == manager.characters.rabbit.texture and not box.left_portrait.flip_h, "兔子独白在左侧并面向中央（立绘原图朝右，不翻转）")
 	check(box.is_typing(), "文本逐字显示")
 	manager.advance()
 	check(not box.is_typing() and box.text_label.visible_characters == -1, "第一次推进补全本句")
@@ -70,7 +70,7 @@ func run() -> void:
 	# 对话：爱丽丝永远在左，兔子在右；名字显示在说话一方。
 	manager.play("prologue_rabbit_talk")
 	check(box.left_portrait.texture == manager.characters.alice.texture, "对话中爱丽丝在左")
-	check(box.right_portrait.texture == manager.characters.rabbit.texture and not box.right_portrait.flip_h, "兔子在右且面向中央")
+	check(box.right_portrait.texture == manager.characters.rabbit.texture and box.right_portrait.flip_h, "兔子在右且面向中央（立绘原图朝右，翻转）")
 	check(box.right_portrait.modulate == Color.WHITE and box.left_portrait.modulate != Color.WHITE, "说话一方高亮，另一方变暗")
 	check(box.name_tag.position.x > 640, "兔子说话时名字在右侧")
 	box.finish_typing()

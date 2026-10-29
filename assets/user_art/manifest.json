@@ -143,5 +143,41 @@
       "processing": "Original alpha preserved; isolated alpha specks removed; tight crop only; no resizing"
     }
   ],
-  "portrait_processing": "Independent transparent PSD layers; native pixel ratio retained. Runtime uses one uniform scale per portrait."
+  "portrait_processing": "Independent transparent PSD layers; native pixel ratio retained. Runtime uses one uniform scale per portrait.",
+  "assets_v2": {
+    "note": "美术交付的新角色设计（兔子、姐姐、公爵夫人、柴郡猫）。从整张设计图按姿势裁剪，去掉与边缘相连的白底（JPEG 来源额外收 1 像素边），不缩放、不重绘。",
+    "sources": {
+      "rabbit": "设计图 3.jpg（1440x1080）",
+      "sister": "设计图 4.png（半身）、5.png（三视图）",
+      "duchess": "设计图 2.jpg",
+      "cheshire": "设计图 1.jpg（2752x2064）"
+    },
+    "files": {
+      "rabbit": [
+        "rabbit_front_v2.png",
+        "rabbit_side_v2.png（朝左）",
+        "rabbit_back_v2.png",
+        "rabbit_portrait_v2.png（立绘，朝右）"
+      ],
+      "sister": [
+        "sister_front.png",
+        "sister_side.png（朝右）",
+        "sister_back.png",
+        "sister_portrait.png"
+      ],
+      "duchess（暂未接入）": [
+        "duchess_front.png",
+        "duchess_side.png",
+        "duchess_back.png",
+        "duchess_portrait.png"
+      ],
+      "cheshire（暂未接入）": [
+        "cheshire_front.png",
+        "cheshire_side.png",
+        "cheshire_back.png",
+        "cheshire_portrait.png"
+      ]
+    },
+    "filter": "nearest（三视图）"
+  }
 }

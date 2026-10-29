@@ -14,6 +14,27 @@ func check(value: bool, message: String) -> void:
 		push_error(message)
 
 ## 生成一个带 idle / walk / jump 动画的假模型，动画名故意带前缀，检验映射。
+## 三视图占位：朝向镜头 = 正面，背对 = 背面，左右 = 侧面（按原图朝向翻转）。
+func check_directional(prologue: Node, actor: Node3D, label: String, side_faces: String) -> void:
+	var cam: Camera3D = prologue.get_node("Camera")
+	actor.camera = cam
+	var sprite: Sprite3D = actor.placeholder
+	var right := cam.global_basis.x
+	var toward := cam.global_basis.z
+	actor.face_toward(toward)
+	var front: Texture2D = sprite.texture
+	actor.face_toward(-toward)
+	var back: Texture2D = sprite.texture
+	check(front != back, "%s：朝向镜头与背对镜头用不同贴图" % label)
+	actor.face_toward(right)
+	var side: Texture2D = sprite.texture
+	var flip_right := sprite.flip_h
+	actor.face_toward(-right)
+	check(sprite.texture == side and sprite.flip_h != flip_right, "%s：向左/向右用同一张侧面图并翻转" % label)
+	check(side != front and side != back, "%s：侧面图与正反面不同" % label)
+	check(flip_right == (side_faces == "left"), "%s：向右走时%s" % [label, "翻转" if side_faces == "left" else "不翻转"])
+	check(is_equal_approx(sprite.offset.y, sprite.texture.get_height() * 0.5), "%s：贴图底边对齐脚底" % label)
+
 func make_fake_model(path: String) -> void:
 	var root := Node3D.new()
 	root.name = "FakeModel"
@@ -51,9 +72,10 @@ func run() -> void:
 	var sister: Node3D = prologue.get_node("Actors/Sister")
 	var hole: Node3D = prologue.get_node("Props/RabbitHole")
 	check(alice_model.placeholder is AnimatedSprite3D and alice_model.model == null, "爱丽丝没有正式模型时显示占位行走图")
-	check(rabbit.placeholder is Sprite3D and sister.placeholder is Sprite3D, "兔子、姐姐显示占位贴图")
-	check(sister.placeholder.modulate != Color.WHITE, "姐姐占位贴图带颜色")
-	check(hole.placeholder == null and hole.model == null, "兔子洞没有模型时不画任何东西（用森林里自带的洞）")
+	check(rabbit.placeholder is Sprite3D and sister.placeholder is Sprite3D, "兔子、姐姐显示三视图贴图")
+	check_directional(prologue, rabbit, "side_faces_left", "left")
+	check_directional(prologue, sister, "side_faces_right", "right")
+	check(hole.placeholder is MeshInstance3D and hole.model == null, "兔子洞没有模型时显示地面深色圆盘占位")
 
 	# 3. 换成假模型：爱丽丝
 	var fake_path := "user://fake_model.tscn"
