@@ -39,3 +39,13 @@ venv/
 .env.*
 *.keystore
 *.jks
+
+# ============ 来自 GitHub Godot 模板 ============
+.nomedia
+.import/
+export_credentials.cfg
+*.tmp
+~*.dll
+.mono/
+mono_crash.*.json
+*.exe
