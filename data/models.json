@@ -1,0 +1,53 @@
+{
+	"alice": {
+		"scene": "",
+		"scale": 1.0,
+		"offset": [0, 0, 0],
+		"yaw_degrees": 0,
+		"animations": {"idle": "idle", "walk": "walk", "jump": "jump"},
+		"placeholder": {
+			"type": "animated_sprite",
+			"frames": "res://scenes/player/alice_frames.tres",
+			"pixel_size": 0.0026,
+			"offset": [0, 278],
+			"shaded": true
+		}
+	},
+	"rabbit": {
+		"scene": "",
+		"scale": 1.0,
+		"offset": [0, 0, 0],
+		"yaw_degrees": 0,
+		"animations": {"idle": "idle", "walk": "walk", "jump": "jump"},
+		"placeholder": {
+			"type": "sprite",
+			"texture": "res://assets/user_art/rabbit_side.png",
+			"pixel_size": 0.01625,
+			"offset": [0, 40],
+			"faces": "left"
+		}
+	},
+	"sister": {
+		"scene": "",
+		"scale": 1.0,
+		"offset": [0, 0, 0],
+		"yaw_degrees": 0,
+		"animations": {"idle": "idle", "walk": "walk", "jump": "jump"},
+		"placeholder": {
+			"type": "sprite",
+			"texture": "res://assets/user_art/alice_front.png",
+			"pixel_size": 0.0205,
+			"offset": [0, 40],
+			"faces": "front",
+			"tint": [0.78, 0.68, 0.95]
+		}
+	},
+	"rabbit_hole": {
+		"scene": "",
+		"scale": 1.0,
+		"offset": [0, 0, 0],
+		"yaw_degrees": 0,
+		"animations": {"idle": "idle"},
+		"placeholder": {"type": "none"}
+	}
+}

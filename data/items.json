@@ -1,0 +1,18 @@
+{
+	"watch": {
+		"name": "ITEM_WATCH_NAME",
+		"category": "ITEM_WATCH_CATEGORY",
+		"description": "ITEM_WATCH_DESC",
+		"icon": "",
+		"icon_color": "#e0bd62",
+		"tune_puzzle": "watch",
+		"tune_requires_flag": "prologue_rabbit_talked"
+	},
+	"note_a": {
+		"name": "ITEM_NOTE_A_NAME",
+		"category": "ITEM_NOTE_CATEGORY",
+		"description": "ITEM_NOTE_A_DESC",
+		"icon": "",
+		"icon_color": "#7fc4d8"
+	}
+}

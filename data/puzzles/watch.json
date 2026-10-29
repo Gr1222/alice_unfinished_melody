@@ -1,0 +1,16 @@
+{
+	"_note": "melody / item_track 为空时使用程序生成的占位音频（placeholder）。有真实音频后填路径，并把 duration 改成音频长度、cuts 改成切点。",
+	"melody": "",
+	"item_track": "",
+	"duration": 8.0,
+	"cuts": [0.0, 2.0, 3.5, 6.0, 8.0],
+	"melody_track_name": "NAME_ALICE",
+	"item_track_name": "ITEM_WATCH_NAME",
+	"consume_item": "watch",
+	"reward_item": "note_a",
+	"placeholder": {
+		"beat": 0.5,
+		"melody_notes": [72, 76, 79, 76, 74, 77, 81, 77, 76, 79, 84, 79, 77, 74, 71, 72],
+		"bell_notes": [84, 88, 91, 88, 86, 89, 93, 89, 88, 91, 96, 91, 89, 86, 83, 84]
+	}
+}

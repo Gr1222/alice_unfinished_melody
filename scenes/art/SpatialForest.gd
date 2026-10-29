@@ -7,11 +7,12 @@ const BACK = preload("res://assets/user_art/alice_back.png")
 const SPEED := 2.4
 const JUMP_SPEED := 4.8
 const GRAVITY := 13.0
-const ACTIONS := {"forest_left":[KEY_LEFT,KEY_A],"forest_right":[KEY_RIGHT,KEY_D],"forest_up":[KEY_UP],"forest_down":[KEY_DOWN,KEY_S],"forest_jump":[KEY_W]}
+const ACTIONS := {"forest_left":[KEY_LEFT,KEY_A],"forest_right":[KEY_RIGHT,KEY_D],"forest_up":[KEY_UP,KEY_W],"forest_down":[KEY_DOWN,KEY_S],"forest_jump":[KEY_SPACE]}
+const ALICE_ANIMATIONS := ["idle_down","idle_right","idle_up","walk_down","walk_right","walk_up"]
 var owned_actions: Array[String] = []
 var route: Array[Vector3] = []
 var actor: CharacterBody3D
-var sprite: Sprite3D
+var sprite: AnimatedSprite3D
 var camera: Camera3D
 var source_lights: Array[OmniLight3D] = []
 var contact_shadow: MeshInstance3D
@@ -19,6 +20,7 @@ var ui: CanvasLayer
 var automatic := false
 var index := 1
 var yaw := 0.0
+var alice_facing := Vector3(0,0,1)
 var frozen := false
 var last_direction := Vector3(1,0,-.7).normalized()
 var jump_direction := Vector3.ZERO
@@ -27,6 +29,9 @@ var record_jump_demo := false
 var demo_time := 0.0
 var demo_jump_sent := false
 @export var art_focus := false
+@export var forest_assets := "res://assets/spatial_forest/"
+@export var floor_size := Vector3(29,.1,23)
+@export var alice_sprite_frames: SpriteFrames
 
 func _ready() -> void:
 	get_window().size = Vector2i(1280,720)
@@ -39,8 +44,10 @@ func _ready() -> void:
 			var event := InputEventKey.new()
 			event.physical_keycode = code
 			InputMap.action_add_event(action,event)
-	var model: Node3D = load("res://assets/spatial_forest/forest.glb").instantiate()
-	add_child(model)
+	var model := get_node_or_null("ForestModel") as Node3D
+	if model == null:
+		model = load(forest_assets+"forest.glb").instantiate()
+		add_child(model)
 	# The importer retains COLOR_0 but does not enable it on these materials.
 	for mesh: MeshInstance3D in model.find_children("*","MeshInstance3D",true,false):
 		for surface in range(mesh.mesh.get_surface_count()):
@@ -50,7 +57,7 @@ func _ready() -> void:
 				painted.vertex_color_use_as_albedo = true
 				painted.vertex_color_is_srgb = false
 				mesh.set_surface_override_material(surface,painted)
-	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/spatial_forest/layout.json"))
+	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(forest_assets+"layout.json"))
 	for point: Array in layout.route: route.append(vector(point))
 	add_floor()
 	add_log_collision(layout.jump_obstacle)
@@ -93,9 +100,16 @@ func _ready() -> void:
 	collision.position.y = .65
 	actor.add_child(collision)
 	add_child(actor)
-	sprite = Sprite3D.new()
-	sprite.texture = FRONT
-	sprite.pixel_size = 1.5 / FRONT.get_height()
+	sprite = AnimatedSprite3D.new()
+	sprite.name = "AliceSprite"
+	if alice_sprite_frames == null:
+		sprite.sprite_frames = make_static_alice_frames()
+	elif has_alice_animations(alice_sprite_frames):
+		sprite.sprite_frames = alice_sprite_frames
+	else:
+		sprite.sprite_frames = make_static_alice_frames()
+	var idle_texture := sprite.sprite_frames.get_frame_texture("idle_down",0)
+	sprite.pixel_size = 1.5 / idle_texture.get_height()
 	sprite.position.y = .75
 	sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	sprite.alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
@@ -103,7 +117,12 @@ func _ready() -> void:
 	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	actor.add_child(sprite)
-	for point: Vector3 in [Vector3(-4,.4,1.4),Vector3(1.8,.4,-2.8),Vector3(4,.4,3.8),Vector3(7,.4,-2.6),Vector3(-8,.4,4.8),Vector3(9,1.8,-5.5)]:
+	update_alice_animation(Vector3.ZERO)
+	var light_positions: Array[Vector3] = [Vector3(-4,.4,1.4),Vector3(1.8,.4,-2.8),Vector3(4,.4,3.8),Vector3(7,.4,-2.6),Vector3(-8,.4,4.8),Vector3(9,1.8,-5.5)]
+	if layout.has("sources"):
+		light_positions.clear()
+		for point: Array in layout.sources: light_positions.append(vector(point))
+	for point: Vector3 in light_positions:
 		var light := OmniLight3D.new()
 		light.name = "MushroomLight" if point.y<1 else "RuneLight"
 		light.position = point
@@ -132,7 +151,7 @@ func _ready() -> void:
 	label.add_theme_color_override("font_shadow_color",Color.BLACK)
 	label.add_theme_constant_override("shadow_offset_x",2)
 	label.add_theme_constant_override("shadow_offset_y",2)
-	label.text = "森林样段 · W 跳过横木\n方向键移动　W 跳跃　空格 自动演示　C 观察角度　L 光源对比　R 重置"
+	label.text = "森林样段 · 空格跳过横木\nWASD / 方向键移动　空格跳跃　P 自动演示　C 观察角度　L 光源对比　R 重置"
 	ui.add_child(label)
 	if "--auto-spatial" in OS.get_cmdline_user_args():
 		automatic = true
@@ -149,11 +168,49 @@ func _ready() -> void:
 func vector(values: Array) -> Vector3:
 	return Vector3(float(values[0]),float(values[1]),float(values[2]))
 
+func make_static_alice_frames() -> SpriteFrames:
+	var frames := SpriteFrames.new()
+	frames.remove_animation("default")
+	var idle_textures := {"idle_down":FRONT,"idle_right":SIDE,"idle_up":BACK}
+	var walk_textures := {"walk_down":FRONT,"walk_right":SIDE,"walk_up":BACK}
+	for animation_name: String in ALICE_ANIMATIONS:
+		frames.add_animation(animation_name)
+		frames.set_animation_loop(animation_name,true)
+		var texture: Texture2D = idle_textures.get(animation_name,walk_textures.get(animation_name))
+		frames.add_frame(animation_name,texture)
+	for animation_name: String in ["walk_down","walk_right","walk_up"]:
+		frames.set_animation_speed(animation_name,8.0)
+	return frames
+
+func has_alice_animations(frames: SpriteFrames) -> bool:
+	for animation_name: String in ALICE_ANIMATIONS:
+		if not frames.has_animation(animation_name):
+			push_error("Alice SpriteFrames is missing animation '%s'." % animation_name)
+			return false
+	return true
+
+func update_alice_animation(direction: Vector3) -> void:
+	var moving := direction.length_squared() > 0.0001
+	if moving: alice_facing = direction
+	var facing := alice_facing
+	var animation := "walk_" if moving else "idle_"
+	var flip := false
+	if absf(facing.x)>absf(facing.z):
+		animation += "right"
+		flip = facing.x<0
+	elif facing.z>=0:
+		animation += "down"
+	else:
+		animation += "up"
+	sprite.flip_h = flip
+	if sprite.animation != animation or (moving and not sprite.is_playing()):
+		sprite.play(animation)
+
 func add_floor() -> void:
 	var body := StaticBody3D.new()
 	body.name = "GroundCollision"
 	var shape := BoxShape3D.new()
-	shape.size = Vector3(29,.1,23)
+	shape.size = floor_size
 	var collision := CollisionShape3D.new()
 	collision.shape = shape
 	collision.position.y = -.04
@@ -228,8 +285,8 @@ func _physics_process(delta: float) -> void:
 		if demo_time>=1.3 and not demo_jump_sent:
 			demo_jump_sent = true
 			var event := InputEventKey.new()
-			event.keycode = KEY_W
-			event.physical_keycode = KEY_W
+			event.keycode = KEY_SPACE
+			event.physical_keycode = KEY_SPACE
 			event.pressed = true
 			_unhandled_key_input(event)
 	if direction != Vector3.ZERO: automatic = false
@@ -252,12 +309,7 @@ func _physics_process(delta: float) -> void:
 	actor.velocity.x = direction.x*SPEED
 	actor.velocity.z = direction.z*SPEED
 	actor.move_and_slide()
-	if direction != Vector3.ZERO:
-		var texture: Texture2D = BACK if direction.z<0 else FRONT
-		if absf(direction.x)>absf(direction.z): texture = SIDE
-		sprite.texture = texture
-		sprite.pixel_size = 1.5/texture.get_height()
-		sprite.flip_h = texture == SIDE and direction.x<0
+	update_alice_animation(direction)
 	update_camera(delta)
 	update_contact_shadow()
 
@@ -268,7 +320,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	match event.keycode:
-		KEY_SPACE:
+		KEY_P:
 			if automatic: automatic = false
 			else:
 				reset_actor()

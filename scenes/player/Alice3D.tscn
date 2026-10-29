@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/player/Alice3D.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/components/ActorModel.gd" id="2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.18
+height = 1.3
+
+[node name="Alice3D" type="CharacterBody3D" groups=["player"]]
+collision_mask = 3
+floor_snap_length = 0.12
+safe_margin = 0.002
+script = ExtResource("1")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Model" type="Node3D" parent="."]
+script = ExtResource("2")
+model_id = "alice"

@@ -1,0 +1,147 @@
+{
+  "source": "User-supplied PSDs; ownership/licensing not independently verified",
+  "processing": "Composite crops; edge-connected white removed. No generated art or invented animation frames.",
+  "animation": "Static front/side/back poses; left uses mirrored side pose. Walking cycles unavailable.",
+  "assets": [
+    {
+      "id": "alice_front",
+      "file": "alice_front.png",
+      "source": "1792998975.psd",
+      "source_sha256": "c9fc23625678fa926a4720e12d17edefa920f1df6913613584deec67563449c0",
+      "source_crop": [
+        1298,
+        1192,
+        1675,
+        1795
+      ],
+      "size": [
+        50,
+        80
+      ],
+      "pivot": "bottom_center",
+      "filter": "nearest"
+    },
+    {
+      "id": "alice_side",
+      "file": "alice_side.png",
+      "source": "1792998975.psd",
+      "source_sha256": "c9fc23625678fa926a4720e12d17edefa920f1df6913613584deec67563449c0",
+      "source_crop": [
+        1735,
+        1199,
+        2120,
+        1811
+      ],
+      "size": [
+        50,
+        80
+      ],
+      "pivot": "bottom_center",
+      "filter": "nearest"
+    },
+    {
+      "id": "alice_back",
+      "file": "alice_back.png",
+      "source": "1792998975.psd",
+      "source_sha256": "c9fc23625678fa926a4720e12d17edefa920f1df6913613584deec67563449c0",
+      "source_crop": [
+        2203,
+        1199,
+        2565,
+        1811
+      ],
+      "size": [
+        47,
+        80
+      ],
+      "pivot": "bottom_center",
+      "filter": "nearest"
+    },
+    {
+      "id": "rabbit_side",
+      "file": "rabbit_side.png",
+      "source": "未命名作品.psd",
+      "source_sha256": "f650b97948a05d63e495842616cbf68185f06e3b3b3885ad5fc604899519b94e",
+      "source_crop": [
+        3498,
+        578,
+        4092,
+        1584
+      ],
+      "size": [
+        46,
+        80
+      ],
+      "pivot": "bottom_center",
+      "filter": "nearest"
+    },
+    {
+      "id": "dialogue_frame",
+      "file": "dialogue_frame.png",
+      "source": "未命名作品.psd",
+      "source_sha256": "f650b97948a05d63e495842616cbf68185f06e3b3b3885ad5fc604899519b94e",
+      "source_crop": [
+        149,
+        726,
+        1063,
+        1023
+      ],
+      "size": [
+        511,
+        160
+      ],
+      "pivot": "UI",
+      "filter": "linear"
+    },
+    {
+      "id": "alice_portrait",
+      "file": "alice_portrait.png",
+      "source": "未命名作品(1).psd",
+      "source_sha256": "927aedc85482057b801749e15416593250451043f72e5768cb11342c04a92fd5",
+      "source_layer_index": 1,
+      "source_layer_name": "图层 1",
+      "source_viewport": null,
+      "alpha_crop": [
+        974,
+        159,
+        1825,
+        1857
+      ],
+      "size": [
+        851,
+        1698
+      ],
+      "pivot": "bottom_center",
+      "filter": "linear",
+      "processing": "Original alpha preserved; isolated alpha specks removed; tight crop only; no resizing"
+    },
+    {
+      "id": "rabbit_portrait",
+      "file": "rabbit_portrait.png",
+      "source": "未命名作品.psd",
+      "source_sha256": "f650b97948a05d63e495842616cbf68185f06e3b3b3885ad5fc604899519b94e",
+      "source_layer_index": 5,
+      "source_layer_name": "新建组",
+      "source_viewport": [
+        4557,
+        1293,
+        5673,
+        4290
+      ],
+      "alpha_crop": [
+        0,
+        0,
+        1116,
+        2997
+      ],
+      "size": [
+        1116,
+        2997
+      ],
+      "pivot": "bottom_center",
+      "filter": "linear",
+      "processing": "Original alpha preserved; isolated alpha specks removed; tight crop only; no resizing"
+    }
+  ],
+  "portrait_processing": "Independent transparent PSD layers; native pixel ratio retained. Runtime uses one uniform scale per portrait."
+}

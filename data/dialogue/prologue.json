@@ -1,0 +1,74 @@
+{
+	"prologue_sister": {
+		"mode": "talk",
+		"with": "sister",
+		"lines": [
+			{"speaker": "sister", "text": "DLG_PRO_SISTER_01"},
+			{"speaker": "alice", "text": "DLG_PRO_SISTER_02"},
+			{"speaker": "sister", "text": "DLG_PRO_SISTER_03"},
+			{"speaker": "alice", "text": "DLG_PRO_SISTER_04"}
+		]
+	},
+	"prologue_wake": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "alice", "text": "DLG_PRO_WAKE_01"},
+			{"speaker": "alice", "text": "DLG_PRO_WAKE_02"},
+			{"speaker": "alice", "text": "DLG_PRO_WAKE_03"}
+		]
+	},
+	"prologue_rabbit_pass": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_PASS_01"}
+		]
+	},
+	"prologue_alice_curious": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "alice", "text": "DLG_PRO_CURIOUS_01"},
+			{"speaker": "alice", "text": "DLG_PRO_CURIOUS_02"}
+		]
+	},
+	"prologue_rabbit_roots": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_ROOTS_01"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_ROOTS_02"}
+		]
+	},
+	"prologue_rabbit_talk": {
+		"mode": "talk",
+		"with": "rabbit",
+		"lines": [
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_01"},
+			{"speaker": "alice", "text": "DLG_PRO_RABBIT_TALK_02"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_03"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_04"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_05"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_06"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_07"},
+			{"know": "rabbit"},
+			{"speaker": "rabbit", "text": "DLG_PRO_RABBIT_TALK_08"}
+		]
+	},
+	"prologue_alice_study": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "alice", "text": "DLG_PRO_STUDY_01"},
+			{"speaker": "alice", "text": "DLG_PRO_STUDY_02"}
+		]
+	},
+	"prologue_note_hole": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "alice", "text": "DLG_PRO_NOTE_HOLE_01"}
+		]
+	},
+	"prologue_no_watch": {
+		"mode": "monologue",
+		"lines": [
+			{"speaker": "alice", "text": "DLG_PRO_NO_WATCH_01"}
+		]
+	}
+}

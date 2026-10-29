@@ -1,0 +1,23 @@
+{
+	"alice": {
+		"name": "NAME_ALICE",
+		"portrait": "res://assets/user_art/alice_portrait.png",
+		"faces": "front",
+		"waist": 0.5,
+		"always_known": true
+	},
+	"sister": {
+		"name": "NAME_SISTER",
+		"portrait": "",
+		"faces": "front",
+		"waist": 0.5,
+		"always_known": true
+	},
+	"rabbit": {
+		"name": "NAME_RABBIT",
+		"portrait": "res://assets/user_art/rabbit_portrait.png",
+		"faces": "left",
+		"waist": 0.6,
+		"always_known": false
+	}
+}

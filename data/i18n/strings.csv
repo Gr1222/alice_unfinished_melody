@@ -1,0 +1,62 @@
+keys,zh,en
+UI_UNKNOWN_NAME,？？？,???
+UI_QUEST_TITLE,任务目标,Objective
+UI_INVENTORY_TITLE,背包,Bag
+UI_ITEM_DETAIL,道具详情,Item Details
+UI_ITEM_GET,获得道具,Item Obtained
+UI_ITEM_LOST,失去道具,Item Lost
+UI_CONFIRM,确定,OK
+UI_RESET,重置,Reset
+UI_TUNE,调律,Tune
+UI_PROMPT_INTERACT,[E] 拾取,[E] Pick up
+UI_PROMPT_TALK,[F] 对话,[F] Talk
+NAME_ALICE,爱丽丝,Alice
+NAME_SISTER,姐姐,Sister
+NAME_RABBIT,白兔,White Rabbit
+DLG_PRO_SISTER_01,"爱丽丝，跑了一下午，累了吧？","Alice, you've been running around all afternoon. Tired?"
+DLG_PRO_SISTER_02,"嗯……我想在树下休息一会儿。","Mm... I want to rest under the tree for a bit."
+DLG_PRO_SISTER_03,"那就睡吧，我在这里陪着你。","Then sleep. I'll stay right here with you."
+DLG_PRO_SISTER_04,"只睡一小会儿……就一小会儿……","Just a little nap... just a little..."
+DLG_PRO_WAKE_01,"这段旋律……好熟悉。","This melody... it feels so familiar."
+DLG_PRO_WAKE_02,"我在哪里听过？……想不起来了。","Where have I heard it before? ...I can't remember."
+DLG_PRO_WAKE_03,"姐姐？……姐姐去哪儿了？","Sister? ...Where did she go?"
+DLG_PRO_RABBIT_PASS_01,"要迟到了，要迟到了！音律乱了，全都跑调了！","I'm late, I'm late! The melody's gone wrong, everything is out of tune!"
+DLG_PRO_CURIOUS_01,"兔子……会说话？","A rabbit... that talks?"
+DLG_PRO_CURIOUS_02,"我得追上去问问它！","I have to catch up and ask it!"
+DLG_PRO_RABBIT_ROOTS_01,"怀表呢？我的怀表呢？","My watch? Where's my watch?"
+DLG_PRO_RABBIT_ROOTS_02,"没有它，我一定会迟到的……","Without it, I'll be late for sure..."
+DLG_PRO_RABBIT_TALK_01,"你！你有没有看到一块怀表？","You! Have you seen a pocket watch?"
+DLG_PRO_RABBIT_TALK_02,"怀表？没……没有。","A watch? N-no."
+DLG_PRO_RABBIT_TALK_03,"真的吗？……","Really? ..."
+DLG_PRO_RABBIT_TALK_04,"那可不是普通的怀表。仙境里的道具，都是无序化的音符，各自拥有奇特的力量。","That's no ordinary watch. Every object in Wonderland is a scattered note, and each one holds a strange power."
+DLG_PRO_RABBIT_TALK_05,"那块怀表能让持有者永远不会迟到。","That watch makes sure whoever holds it is never late."
+DLG_PRO_RABBIT_TALK_06,"不过，人类是用不了它的。如果你找到了，一定要还给我！","But humans can't use it. If you find it, you must give it back to me!"
+DLG_PRO_RABBIT_TALK_07,"我是白兔，仙境的节拍守护者——","I'm the White Rabbit, keeper of Wonderland's beat—"
+DLG_PRO_RABBIT_TALK_08,"啊，没时间了！要迟到了！","Oh, no time! I'm late!"
+DLG_PRO_STUDY_01,"它跳进洞里了……","It jumped into the hole..."
+DLG_PRO_STUDY_02,"能让人永远不迟到的怀表……我想研究一下。","A watch that means you're never late... I want to take a closer look."
+DLG_PRO_NOTE_HOLE_01,"这个音符……好像在回应那个洞。","This note... it seems to be answering the hole."
+QUEST_PRO_FOLLOW_RABBIT,"追上会说话的兔子","Catch up with the talking rabbit"
+TUTORIAL_MOVE,"[W A S D] 移动　　[空格] 跳跃","[W A S D] Move    [Space] Jump"
+ITEM_WATCH_NAME,"怀表","Pocket Watch"
+ITEM_WATCH_CATEGORY,"仙境道具","Wonderland Item"
+ITEM_WATCH_DESC,"一块发着微光的金色怀表。指针在轻轻颤动，表盘里传出细小的滴答声，好像在等待什么。","A faintly glowing golden pocket watch. Its hands tremble gently, and a tiny ticking comes from inside, as if it is waiting for something."
+ITEM_NOTE_A_NAME,"音符 A","Note A"
+ITEM_NOTE_CATEGORY,"音符","Note"
+ITEM_NOTE_A_DESC,"调律之后得到的音符，散发着温暖的光。它好像在回应某个地方。","A note born from tuning, glowing with a warm light. It seems to be answering something, somewhere."
+UI_BACK,"返回","Back"
+TUTORIAL_INTERACT,"按 [E] 拾取物品","Press [E] to pick up items"
+TUTORIAL_INVENTORY,"按 [B] 或点击上方的背包图标，打开背包","Press [B] or click the bag icon at the top to open your bag"
+DLG_PRO_NO_WATCH_01,"刚才路边好像有什么东西在发光……要不要回去看看？","Something was glowing by the path back there... maybe I should go back and look."
+TUTORIAL_TALK,"按 [F] 与角色对话","Press [F] to talk"
+TUTORIAL_TUNE,"按 [B] 打开背包，点击怀表的【调律】","Press [B] to open your bag, then click [Tune] on the watch"
+QUEST_PRO_STUDY_WATCH,"研究一下怀表","Take a closer look at the watch"
+UI_PUZZLE_CONFIRM,"确认","Confirm"
+PUZZLE_HINT_LISTEN,"仔细聆听……","Listen closely..."
+PUZZLE_HINT_ARRANGE,"点击片段试听，把它们拖到下方音轨上，按你喜欢的顺序排列","Click a piece to hear it. Drag the pieces onto the lower track, in any order you like."
+PUZZLE_HINT_CONFIRM,"两条音轨对齐了。点击【确认】","The two tracks line up. Click [Confirm]."
+PUZZLE_HINT_RESULT,"这是属于你的旋律。","This is your melody."
+QUEST_PRO_APPROACH_HOLE,"靠近兔子洞","Approach the rabbit hole"
+UI_PROMPT_HOLE,"[F] 调查兔子洞","[F] Examine the rabbit hole"
+CHAPTER1_TITLE,"第一章　音律大厅","Chapter 1: The Hall of Tones"
+CHAPTER1_PLACEHOLDER,"（制作中，敬请期待）","(In development. Coming soon.)"

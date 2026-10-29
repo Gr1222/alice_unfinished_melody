@@ -20,12 +20,18 @@ func run() -> void:
 	var scene = load("res://scenes/art/SpatialForest.tscn").instantiate()
 	root.add_child(scene)
 	check(scene.camera.projection == Camera3D.PROJECTION_PERSPECTIVE,"perspective camera")
-	check(scene.sprite is Sprite3D and scene.sprite.shaded,"lit 2D sprite in 3D")
+	check(scene.sprite is AnimatedSprite3D and scene.sprite.shaded,"lit animated sprite in 3D")
+	check(scene.sprite.billboard == BaseMaterial3D.BILLBOARD_ENABLED,"Alice sprite faces the camera")
+	check(scene.sprite.texture_filter == BaseMaterial3D.TEXTURE_FILTER_NEAREST,"Alice sprite uses nearest filtering")
+	scene.update_alice_animation(Vector3(-1,0,0))
+	check(scene.sprite.animation == "walk_right" and scene.sprite.flip_h,"left movement flips the side walk cycle")
+	scene.update_alice_animation(Vector3.ZERO)
+	check(scene.sprite.animation == "idle_right" and scene.sprite.flip_h,"stationary Alice keeps her last facing")
 	check(scene.actor is CharacterBody3D,"physical player body")
 	check(scene.actor.find_children("*","Light3D",true,false).is_empty(),"no invisible player lamp")
 	check(scene.source_lights.size() == 6,"visible scene sources only")
-	check(InputMap.action_get_events("forest_jump")[0].physical_keycode == KEY_W,"W is jump")
-	check(InputMap.action_get_events("forest_up")[0].physical_keycode == KEY_UP,"up movement does not consume W")
+	check(InputMap.action_get_events("forest_jump")[0].physical_keycode == KEY_SPACE,"space is jump")
+	check(InputMap.action_get_events("forest_up")[1].physical_keycode == KEY_W,"W moves forward")
 	var mesh_count := 0
 	var actual_volume := false
 	var grass_vertices := 0
@@ -60,8 +66,8 @@ func run() -> void:
 	check(scene.actor.is_on_wall() and blocked.distance_to(start)<1.0,"walking is blocked by log")
 	var before: int = scene.jump_count
 	var event := InputEventKey.new()
-	event.physical_keycode = KEY_W
-	event.keycode = KEY_W
+	event.physical_keycode = KEY_SPACE
+	event.keycode = KEY_SPACE
 	event.pressed = true
 	scene._unhandled_key_input(event)
 	check(scene.jump_count == before+1 and scene.actor.velocity.y>0,"W initiates jump")

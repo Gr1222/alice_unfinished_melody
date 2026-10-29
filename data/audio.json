@@ -1,0 +1,7 @@
+{
+	"music": {
+		"_note": "prologue_sleep 暂用森林 BGM 占位，美术提供入睡音乐后替换路径即可",
+		"forest": "res://assets/audio/music/forest_theme.wav",
+		"prologue_sleep": "res://assets/audio/music/forest_theme.wav"
+	}
+}

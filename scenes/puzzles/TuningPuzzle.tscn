@@ -1,0 +1,203 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/puzzles/TuningPuzzle.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/components/TrackSequencer.gd" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.12, 0.15, 0.24, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="Style_reset"]
+bg_color = Color(0.22, 0.26, 0.38, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.62, 0.8, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_confirm"]
+bg_color = Color(0.93, 0.72, 0.22, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.72, 0.5, 0.1, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+
+[sub_resource type="StyleBoxFlat" id="Style_tray"]
+bg_color = Color(0.08, 0.1, 0.17, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.36, 0.52, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="TuningPuzzle" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.05, 0.1, 1)
+
+[node name="TrayFrame" type="Panel" parent="Root"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 96.0
+offset_right = 1244.0
+offset_bottom = 704.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_tray")
+
+[node name="Decor" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Root"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 14.0
+offset_right = 840.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.98, 0.86, 0.55, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Root"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 58.0
+offset_right = 1140.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="MelodyHeader" type="PanelContainer" parent="Root"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 120.0
+offset_right = 132.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="Box" type="VBoxContainer" parent="Root/MelodyHeader"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Root/MelodyHeader/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="Volume" type="HSlider" parent="Root/MelodyHeader/Box"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="ItemHeader" type="PanelContainer" parent="Root"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 230.0
+offset_right = 132.0
+offset_bottom = 310.0
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="Box" type="VBoxContainer" parent="Root/ItemHeader"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="Root/ItemHeader/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="Volume" type="HSlider" parent="Root/ItemHeader/Box"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Playhead" type="ColorRect" parent="Root"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 112.0
+offset_right = 143.0
+offset_bottom = 318.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.9)
+
+[node name="Reset" type="Button" parent="Root"]
+layout_mode = 0
+offset_left = 1150.0
+offset_top = 245.0
+offset_right = 1234.0
+offset_bottom = 295.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("Style_reset")
+theme_override_styles/hover = SubResource("Style_reset")
+theme_override_styles/pressed = SubResource("Style_reset")
+theme_override_styles/disabled = SubResource("Style_reset")
+
+[node name="Confirm" type="Button" parent="Root"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 330.0
+offset_right = 740.0
+offset_bottom = 386.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.36, 0.22, 0.05, 1)
+theme_override_colors/font_hover_color = Color(0.36, 0.22, 0.05, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("Style_confirm")
+theme_override_styles/hover = SubResource("Style_confirm")
+theme_override_styles/pressed = SubResource("Style_confirm")
+
+[node name="Tray" type="Node2D" parent="."]
+
+[node name="Flash" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 0.9, 0.6, 0)
+
+[node name="Sequencer" type="Node" parent="."]
+script = ExtResource("2")

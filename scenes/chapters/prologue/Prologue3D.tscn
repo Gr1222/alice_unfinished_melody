@@ -1,0 +1,93 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/chapters/prologue/Prologue3D.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/components/ForestLevel.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://1hcoualnn8ed" path="res://assets/volume_forest/forest.glb" id="3"]
+[ext_resource type="Script" path="res://scenes/chapters/prologue/PrologueDirector.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/components/ActorModel.gd" id="5"]
+[ext_resource type="Script" path="res://scenes/chapters/prologue/CameraRig.gd" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/player/Alice3D.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/props/PocketWatch.tscn" id="10"]
+[ext_resource type="Script" path="res://scripts/components/Interactable.gd" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/props/MusicNote.tscn" id="12"]
+
+[sub_resource type="SphereShape3D" id="Shape_rabbit_talk"]
+radius = 1.4
+
+[sub_resource type="SphereShape3D" id="Shape_hole"]
+radius = 1.6
+
+[node name="Prologue3D" type="Node3D"]
+script = ExtResource("1")
+
+[node name="ForestLevel" type="Node3D" parent="."]
+script = ExtResource("2")
+
+[node name="ForestModel" parent="ForestLevel" instance=ExtResource("3")]
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Alice" parent="Actors" node_paths=PackedStringArray("camera") instance=ExtResource("8")]
+camera = NodePath("../../Camera")
+
+[node name="Sister" type="Node3D" parent="Actors"]
+script = ExtResource("5")
+model_id = "sister"
+
+[node name="WhiteRabbit" type="Node3D" parent="Actors"]
+visible = false
+script = ExtResource("5")
+model_id = "rabbit"
+
+[node name="Interactable" type="Area3D" parent="Actors/WhiteRabbit"]
+script = ExtResource("11")
+action = "talk"
+prompt_key = "UI_PROMPT_TALK"
+prompt_height = 1.6
+enabled = false
+
+[node name="Range" type="CollisionShape3D" parent="Actors/WhiteRabbit/Interactable"]
+shape = SubResource("Shape_rabbit_talk")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="PocketWatch" parent="Props" instance=ExtResource("10")]
+
+[node name="RabbitHole" type="Node3D" parent="Props"]
+script = ExtResource("5")
+model_id = "rabbit_hole"
+
+[node name="Interactable" type="Area3D" parent="Props/RabbitHole"]
+script = ExtResource("11")
+action = "talk"
+prompt_key = "UI_PROMPT_HOLE"
+prompt_height = 1.4
+enabled = false
+
+[node name="Range" type="CollisionShape3D" parent="Props/RabbitHole/Interactable"]
+shape = SubResource("Shape_hole")
+
+[node name="MusicNote" parent="Props" instance=ExtResource("12")]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.731056, 0.682317, 0, -0.682317, 0.731056, 0, 29, 29)
+current = true
+script = ExtResource("6")
+fov = 43.0
+far = 150.0
+
+[node name="PrologueDirector" type="Node" parent="." node_paths=PackedStringArray("level", "camera", "alice", "sister", "rabbit", "tutorial", "item_popup", "watch", "hole", "note")]
+script = ExtResource("4")
+level = NodePath("../ForestLevel")
+camera = NodePath("../Camera")
+alice = NodePath("../Actors/Alice")
+sister = NodePath("../Actors/Sister")
+rabbit = NodePath("../Actors/WhiteRabbit")
+tutorial = NodePath("../HUD/TutorialHint")
+item_popup = NodePath("../HUD/ItemPopup")
+watch = NodePath("../Props/PocketWatch")
+hole = NodePath("../Props/RabbitHole")
+note = NodePath("../Props/MusicNote")
+
+[node name="HUD" parent="." instance=ExtResource("9")]

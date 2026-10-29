@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="爱丽丝与未完成的旋律 · 序章灰盒"
+run/main_scene="res://scenes/forest/VolumeForest.tscn"
+config/features=PackedStringArray("4.7")
+
+[autoload]
+
+MelodyProgress="*res://scripts/music/MelodyProgress.gd"
+
+[display]
+
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[filesystem]
+
+import/blender/enabled=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

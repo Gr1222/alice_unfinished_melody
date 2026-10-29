@@ -1,0 +1,130 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/ItemPopup.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Style_window"]
+bg_color = Color(0.98, 0.95, 0.84, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.86, 0.5, 0.2, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="Style_icon_frame"]
+bg_color = Color(1, 0.84, 0.42, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.62, 0.36, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_button"]
+bg_color = Color(0.42, 0.72, 0.3, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.86, 0.5, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="Style_button_hover"]
+bg_color = Color(0.5, 0.8, 0.36, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.86, 0.5, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ItemPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.45)
+
+[node name="Window" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 200.0
+offset_right = 940.0
+offset_bottom = 520.0
+theme_override_styles/panel = SubResource("Style_window")
+
+[node name="Content" type="HBoxContainer" parent="Window"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 40.0
+offset_right = 556.0
+offset_bottom = 200.0
+theme_override_constants/separation = 32
+
+[node name="IconFrame" type="PanelContainer" parent="Window/Content"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_icon_frame")
+
+[node name="Icon" type="Panel" parent="Window/Content/IconFrame"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Image" type="TextureRect" parent="Window/Content/IconFrame/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="Window/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Window/Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.22, 0.15, 1)
+theme_override_font_sizes/font_size = 30
+
+[node name="ItemName" type="Label" parent="Window/Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.22, 0.15, 1)
+theme_override_font_sizes/font_size = 36
+
+[node name="Confirm" type="Button" parent="Window"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 228.0
+offset_right = 390.0
+offset_bottom = 288.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("Style_button")
+theme_override_styles/hover = SubResource("Style_button_hover")
+theme_override_styles/pressed = SubResource("Style_button")

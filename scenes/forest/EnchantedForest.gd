@@ -279,7 +279,7 @@ func make_ui() -> void:
 	label.add_theme_color_override("font_shadow_color",Color.BLACK)
 	label.add_theme_constant_override("shadow_offset_x",2)
 	label.add_theme_constant_override("shadow_offset_y",2)
-	label.text = "迷雾森林 · 全图\n方向键移动　W 跳过低树根　E 调查 / 进入洞口\n空格 自动巡游　L 微光开关　R 回到入口　Esc 暂停"
+	label.text = "迷雾森林 · 全图\nWASD / 方向键移动　空格跳跃　E 调查 / 进入洞口\nP 自动巡游　L 微光开关　R 回到入口　Esc 暂停"
 	ui.add_child(label)
 	messages = Label.new()
 	messages.position = Vector2(18,665)

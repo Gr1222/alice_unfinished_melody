@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://scenes/prologue/Prologue.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/music/MelodyPuzzle.tscn" id="2"]
+[ext_resource type="Resource" path="res://data/music/prologue_phrase.tres" id="3"]
+[node name="Prologue" type="Node2D"]
+script = ExtResource("1")
+melody_phrase = ExtResource("3")
+
+[node name="MelodyPuzzle" parent="." instance=ExtResource("2")]

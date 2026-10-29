@@ -1,0 +1,174 @@
+{
+  "game/assets/volume_forest/bark.png": {
+    "bytes": 2630066,
+    "sha256": "203e03d1aed68f2e6e28813cf8571618d34f1bde32eed161856ef86ff1f0118f"
+  },
+  "game/assets/volume_forest/forest.glb": {
+    "bytes": 9692772,
+    "sha256": "df1d0937046414cf7d512c324ce32c191692fbde1f27a282b9dc3dede74733f7"
+  },
+  "game/assets/volume_forest/forest_bark.png": {
+    "bytes": 2630066,
+    "sha256": "203e03d1aed68f2e6e28813cf8571618d34f1bde32eed161856ef86ff1f0118f"
+  },
+  "game/assets/volume_forest/layout.json": {
+    "bytes": 19664,
+    "sha256": "d667f34d44f7039214d4924a2fa62509dfe5216b1a3a28ac00b9c12ff7540605"
+  },
+  "game/assets/volume_forest/painted_ground.gdshader": {
+    "bytes": 428,
+    "sha256": "d349de109fdb870b07c31b76cb03ad531b25eb48d7fd67f8d25c587be87676c8"
+  },
+  "game/assets/volume_forest/portal_interior.gdshader": {
+    "bytes": 130,
+    "sha256": "5ba852e9bb7fbe92373f94411ce9a7db42c4d277c4df531cf4c601b111cc1d84"
+  },
+  "game/assets/user_art/alice_back.png": {
+    "bytes": 2919,
+    "sha256": "f49603dceeb571bc86e59cc6eade8ad69b0ec10006994f3af2d8ab25b8c37af4"
+  },
+  "game/assets/user_art/alice_front.png": {
+    "bytes": 5291,
+    "sha256": "89e6517c945a7e890ff34d0f3ef766cda9f1349ea33144737b1c4e5adce388e5"
+  },
+  "game/assets/user_art/alice_portrait.png": {
+    "bytes": 832795,
+    "sha256": "e637da8c55dc7d8dca8748535f6a77d531138bd90f6e8187e690bb9903f5614e"
+  },
+  "game/assets/user_art/alice_side.png": {
+    "bytes": 4484,
+    "sha256": "c9e951fbfd8fb9363319a7bf4017553de95bc74aaacca2504bed2f5238432e2a"
+  },
+  "game/assets/user_art/dialogue_frame.png": {
+    "bytes": 39019,
+    "sha256": "44f601eb8b7a1a821921ca3b91a515360db9b7f415a92b2c4cf7ba8ef857ca96"
+  },
+  "game/assets/user_art/manifest.json": {
+    "bytes": 3844,
+    "sha256": "0be44f119499268b22a30509397850cc3620ebd5d28ceda2f09889ad67085eb7"
+  },
+  "game/assets/user_art/rabbit_portrait.png": {
+    "bytes": 1692908,
+    "sha256": "941938f370d9de8781315629fb9b4d6b2d8c01bd5df42ccbdce38afb4fd577af"
+  },
+  "game/assets/user_art/rabbit_side.png": {
+    "bytes": 7054,
+    "sha256": "02d3f4d39fdc5d11d783054b5ecc5106593a97758a6f765d9dbe9ddae6cd6fe8"
+  },
+  "game/scenes/prologue/Prologue.gd": {
+    "bytes": 18105,
+    "sha256": "7c3521031bdac3bee0cf07025ece02efa2fff318580b66b2009747ee8ea07a69"
+  },
+  "game/scenes/prologue/Prologue.tscn": {
+    "bytes": 440,
+    "sha256": "70f4daac727771983a1f9137dacd0fe4f52e039a90ceea92241cab395db0394a"
+  },
+  "game/scenes/music/MelodyPuzzle.gd": {
+    "bytes": 9272,
+    "sha256": "c378d89f1519be8a73fab49e993e6a27a9cb2903bd07352044aaebef31a2dd14"
+  },
+  "game/scenes/music/MelodyPuzzle.tscn": {
+    "bytes": 3055,
+    "sha256": "ebb601870d3dbaec504c17ebdff985064d9af14fb79beba8720a04b9a8e0ba49"
+  },
+  "game/scenes/music/MelodyTile.gd": {
+    "bytes": 1031,
+    "sha256": "907b12efc0d820027901dd16a4745c5df48648e76b19cc22173f61abe308eb97"
+  },
+  "game/scripts/UserArt.gd": {
+    "bytes": 1256,
+    "sha256": "26ed53b6198618906aac14a5e737e16ececbefe9839a86c559791e7eea75d244"
+  },
+  "game/scripts/music/MelodyPhrase.gd": {
+    "bytes": 1240,
+    "sha256": "adf6df917669a149193b93bd3b999c37b6591aac8317a9b2ea9425e6ff44b795"
+  },
+  "game/scripts/music/MelodyProgress.gd": {
+    "bytes": 1604,
+    "sha256": "2465969f87c913e85567cfc36385e3070ab2c11030ffc81637c8f7d7b236648e"
+  },
+  "game/data/art/forest_study.json": {
+    "bytes": 326999,
+    "sha256": "488837cc32ea7dbdefd03da4736a0181e63aca13a789bb4101d6b596a7138a04"
+  },
+  "game/data/music/prologue_phrase.tres": {
+    "bytes": 543,
+    "sha256": "514aad0bcfc9556af14b3764c11fcf5c5f06bee78446d9e1cecbefd123c79bd6"
+  },
+  "game/scenes/art/SpatialForest.gd": {
+    "bytes": 12344,
+    "sha256": "44d99e3bc73a9971d3ff8953c6798f12dad3a3712b010286b6e9333d2666770b"
+  },
+  "game/scenes/forest/VolumeForest.gd": {
+    "bytes": 7012,
+    "sha256": "cb92f4f9ca7fb7744bdc4473b7979eaad31f58b079e3e95dea54e2c54344d587"
+  },
+  "game/scenes/forest/VolumeForest.tscn": {
+    "bytes": 259,
+    "sha256": "edac84862ba4c9c2ee7a10ca4a0785bdc7b9f5c4a5275caae12963ef4c7f85ac"
+  },
+  "game/tests/volume_forest.gd": {
+    "bytes": 4537,
+    "sha256": "eeda71c1f1f15b3f59e465c4f16a08a2edfa99a04df471c96b2b7cdc2795aab3"
+  },
+  "game/tests/prologue_flow.gd": {
+    "bytes": 13487,
+    "sha256": "033ef42bb833e22c05c69af502dfb33b2219dda5cf5d23c911a653b1a65f39db"
+  },
+  "game/tools/forest_sample/build_volume_map.py": {
+    "bytes": 17538,
+    "sha256": "dd22942a17062de8760351bab25599a86357b2f27370f3386d23326a531a6f7d"
+  },
+  "game/tools/forest_sample/build_spatial_forest.py": {
+    "bytes": 17996,
+    "sha256": "c3357ff0ec54946573430576cd213e92b7a2628856aa73099f05dbe1df3d0290"
+  },
+  "game/tools/forest_sample/encode_volume_video.py": {
+    "bytes": 1085,
+    "sha256": "81cfbf2e5f7065c53876c8e9cada9d88ce7cab6acd9e3f1dfd093e81b65930c9"
+  },
+  "game/assets/spatial_forest/bark.png": {
+    "bytes": 2630066,
+    "sha256": "203e03d1aed68f2e6e28813cf8571618d34f1bde32eed161856ef86ff1f0118f"
+  },
+  "game/project.godot": {
+    "bytes": 683,
+    "sha256": "6bb794d3782a71270616f972e40f849267e42d0ce9d2fd703af616a46f92b0d1"
+  },
+  "Blender/forest-whole-map.blend": {
+    "bytes": 5907891,
+    "sha256": "c05bb9a9ce4cfda20b741f2b6e4f89c36399bbc5ad89c1039ea80ff9b5d3d1be"
+  },
+  "reference/original-8k.png": {
+    "bytes": 3214164,
+    "sha256": "8ef9dbccc3b674794d100be28903df51a65f5c7c49979a21723e97629c53486c"
+  },
+  "preview/whole-map.png": {
+    "bytes": 1173755,
+    "sha256": "40f2d8cd27bdf4a3831ea94c830749588c8bc997f56837746a690425eb2bed2c"
+  },
+  "preview/root.png": {
+    "bytes": 1129908,
+    "sha256": "60264f4a4de6fdfc4b9a3527030c3c25246ebe10a327cf3409b5cec096475f2e"
+  },
+  "preview/root-side.png": {
+    "bytes": 1122802,
+    "sha256": "075facedf1bed50787ca0683ffe66698fa38bd9e690a3251a704c6173c83e0b2"
+  },
+  "preview/portal.png": {
+    "bytes": 1183618,
+    "sha256": "fa2cd0254bbc144dc27c5073ce9701344c95729e544c07a0f719b824dfabc305"
+  },
+  "preview/full-route.mp4": {
+    "bytes": 6861705,
+    "sha256": "1369e798832b9e6a9cb680d229938204e6a70907a75770d293fdb26b3322a69c"
+  },
+  "制作与验证记录.md": {
+    "bytes": 4311,
+    "sha256": "6666abdd2e37f9229108c33a22dd74ed5a0a61c70e8fd7387d275c389021783c"
+  },
+  "先看这里.md": {
+    "bytes": 744,
+    "sha256": "04a634cde33d4586389b960476ede38a77926ec102f66562e611136b328ad572"
+  }
+}

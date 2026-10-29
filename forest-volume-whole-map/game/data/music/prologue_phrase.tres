@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MelodyPhrase" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/music/MelodyPhrase.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+phrase_id = "prologue"
+display_name = "序章 · 初醒"
+sequence_index = 0
+fragment_ids = Array[String](["glimmer", "echo", "rest"])
+fragment_names = Array[String](["微光", "回声", "余韵"])
+visual_clues = Array[String](["静默 → 微光", "微光 → 回声", "回声 → 静默"])
+solution = Array[String](["glimmer", "echo", "rest"])

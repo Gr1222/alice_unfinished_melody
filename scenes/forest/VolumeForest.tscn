@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://darxxpn5rcujk"]
+
+[ext_resource type="Script" uid="uid://b5vj0l4wo1vo3" path="res://scenes/forest/VolumeForest.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://1hcoualnn8ed" path="res://assets/volume_forest/forest.glb" id="2"]
+[ext_resource type="Texture2D" uid="uid://3gcqbmaw6v1d" path="res://assets/user_art/alice_walk_sheet.png" id="2_3571c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_608m2"]
+atlas = ExtResource("2_3571c")
+region = Rect2(0, 0, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sy15"]
+atlas = ExtResource("2_3571c")
+region = Rect2(380, 0, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj5j8"]
+atlas = ExtResource("2_3571c")
+region = Rect2(760, 0, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seb0k"]
+atlas = ExtResource("2_3571c")
+region = Rect2(0, 625, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pfg0"]
+atlas = ExtResource("2_3571c")
+region = Rect2(0, 1250, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g823m"]
+atlas = ExtResource("2_3571c")
+region = Rect2(380, 625, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qukk"]
+atlas = ExtResource("2_3571c")
+region = Rect2(380, 1250, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4jnk"]
+atlas = ExtResource("2_3571c")
+region = Rect2(760, 625, 380, 625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b81mm"]
+atlas = ExtResource("2_3571c")
+region = Rect2(760, 1250, 380, 625)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6lsj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_608m2")
+}],
+"loop": 0,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sy15")
+}],
+"loop": 0,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj5j8")
+}],
+"loop": 0,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seb0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pfg0")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g823m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qukk")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4jnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b81mm")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 4.0
+}]
+
+[node name="VolumeForest" type="Node3D" unique_id=1194426393]
+script = ExtResource("1")
+forest_assets = "res://assets/volume_forest/"
+floor_size = Vector3(34, 0.1, 28)
+alice_sprite_frames = SubResource("SpriteFrames_c6lsj")
+
+[node name="ForestModel" parent="." unique_id=1152066397 instance=ExtResource("2")]
+
+[node name="EditorOverviewCamera" type="Camera3D" parent="." unique_id=1048896475]
+transform = Transform3D(1, 0, 0, 0, 0.73105603, 0.68231744, 0, -0.68231744, 0.73105603, 0, 29, 29)
+projection = 1
+size = 21.375
+far = 150.0

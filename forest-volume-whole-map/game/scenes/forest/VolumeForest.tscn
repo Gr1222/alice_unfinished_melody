@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/forest/VolumeForest.gd" id="1"]
+
+[node name="VolumeForest" type="Node3D"]
+script = ExtResource("1")
+forest_assets = "res://assets/volume_forest/"
+floor_size = Vector3(34,0.1,28)

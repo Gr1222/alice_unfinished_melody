@@ -6,6 +6,8 @@ const NPC_PORTRAIT_FRAME := Rect2(795, 215, 285, 339)
 var facing := Vector2.DOWN
 
 @export var melody_phrase: Resource
+@export var external_world := false
+@export var rabbit_run_speed := 390.0
 @onready var melody_puzzle: CanvasLayer = $MelodyPuzzle
 const FRAGMENT_POSITIONS := [Vector2(775, 350), Vector2(860, 455)]
 const RIM := Vector2(875, 370)
@@ -113,7 +115,7 @@ func say(texts: Array[String], action: String = "") -> void:
 	lines = texts
 	callback = action
 	panel.show()
-	speech.text = lines[0] + "\n[E / 空格 继续]"
+	speech.text = lines[0] + "\n[E / Enter 继续]"
 	update_portrait()
 
 func update_portrait() -> void:
@@ -145,7 +147,7 @@ func place_portrait(is_alice: bool) -> void:
 func advance() -> void:
 	lines.pop_front()
 	if not lines.is_empty():
-		speech.text = lines[0] + "\n[E / 空格 继续]"
+		speech.text = lines[0] + "\n[E / Enter 继续]"
 		update_portrait()
 		return
 	panel.hide()
@@ -175,7 +177,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if paused or ending or chapter: return
 	if not lines.is_empty():
-		if event.pressed and event.keycode in [KEY_E, KEY_SPACE, KEY_ENTER]:
+		if event.pressed and event.keycode in [KEY_E, KEY_ENTER]:
 			get_viewport().set_input_as_handled()
 			advance()
 		return
@@ -225,11 +227,12 @@ func _process(delta: float) -> void:
 	if lines.is_empty() and not running and not jumping and not ending:
 		var dir := Vector2(float(key(KEY_D, KEY_RIGHT)) - float(key(KEY_A, KEY_LEFT)), float(key(KEY_S, KEY_DOWN)) - float(key(KEY_W, KEY_UP)))
 		if not past and dir != Vector2.ZERO: facing = dir
-		if not past: player += dir.normalized() * 235 * delta
-		player.x = clampf(player.x, 65, 1080)
-		player.y = clampf(player.y, 265, 465)
+		if not external_world:
+			if not past: player += dir.normalized() * 235 * delta
+			player.x = clampf(player.x, 65, 1080)
+			player.y = clampf(player.y, 265, 465)
 		# 洞口始终存在；沿外缘绕到树根后，不会因观察而改变碰撞。
-		if player.distance_to(HOLE) < 86:
+		if not external_world and player.distance_to(HOLE) < 86:
 			player = HOLE + (player - HOLE).normalized() * 86
 		if hold > 0:
 			hold += delta
@@ -243,7 +246,7 @@ func _process(delta: float) -> void:
 			stage = 1
 			running = true
 	if running:
-		rabbit.x += delta * 390
+		rabbit.x += delta * rabbit_run_speed
 		if rabbit.x > 920:
 			running = false
 			rabbit = Vector2(925, 315)
@@ -275,7 +278,7 @@ func update_ui() -> void:
 	status.text = ("怀表：已获得" if stage >= 2 else "怀表：未获得") + "  ·  " + ("过去 · 白兔残影与旧脚印" if past else "现在") + ("  ·  已发现下行小径" if path_found else "")
 	if stage >= 3:
 		status.text += "  ·  旋律碎片 %d/3" % MelodyProgress.collected.get(melody_phrase.phrase_id, []).size()
-	help.text = "WASD / 方向键 移动    E 调查    E / 空格 / Enter 对话    Esc 暂停    R 重玩"
+	help.text = "WASD / 方向键 移动    E 调查    E / Enter 对话    Esc 暂停    R 重玩"
 	if investigated: help.text += "    按住 E 观察过去"
 	if stage >= 3: help.text += "    M 乐谱"
 	prompt.text = ""
