@@ -57,9 +57,10 @@ func run() -> void:
 	root.add_child(scene)
 	await process_frame
 	var level: Node = scene.get_node("ForestLevel")
-	check(level.get_node("ForestModel").get_child_count() > 20, "森林模型已实例化")
+	check(level.get_node("ForestModel").find_children("*", "MeshInstance3D", true, false).size() > 0, "森林模型已按 data/forest.json 实例化")
 	check(level.route.size() > 10, "路线已从 layout.json 读取")
-	check(level.get_node_or_null("OuterPathWalls") != null and level.get_node_or_null("LowJumpLogCollision") != null, "路径墙与横木碰撞已生成")
+	check(level.get_node_or_null("OuterPathWalls") != null, "路径墙已生成")
+	check(level.layout.has("jump_obstacle") == (level.get_node_or_null("LowJumpLogCollision") != null), "有横木数据时才生成横木碰撞")
 	var mid: Vector3 = level.point_on_route(level.route_length() * 0.5)
 	check(absf(level.route_progress(mid) - level.route_length() * 0.5) < 0.05, "路线进度换算一致")
 	print("Project structure: %d passed, %d failed" % [passed, failed])

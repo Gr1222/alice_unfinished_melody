@@ -64,8 +64,8 @@ func run() -> void:
 	Input.action_release("move_up")
 	await physics_frames(2)
 
-	# 教程：走够距离后消失
-	for i in range(3): await hold("move_right", 20)
+	# 教程：走够距离后消失（前面已走了 2 米；别再走远，否则会走进怀表范围弹出 E 教程）
+	await hold("move_right", 10)
 	await physics_frames(30)
 	check(state.has_flag("tutorial_move_done") and not tutorial.visible, "走够距离后移动教程消失")
 
@@ -84,12 +84,13 @@ func run() -> void:
 	var off: Vector3 = alice.global_position
 	off.y = 0
 	var nearest: Vector3 = level.point_on_route(level.route_progress(off))
-	check(off.distance_to(nearest) < level.PATH_HALF_WIDTH + 0.1, "隐形墙阻止离开路线（偏离 %.2f 米）" % off.distance_to(nearest))
+	check(off.distance_to(nearest) < level.path_half_width + 0.1, "隐形墙阻止离开路线（偏离 %.2f 米）" % off.distance_to(nearest))
 
 	# 全路线扫描：5 个位置 × 4 个方向，都不能走出路线（含起点/终点封口、弯道）。
 	var worst := 0.0
 	var worst_where := ""
-	for distance in [0.3, 7.0, 14.0, 21.0, level.route_length() - 0.3]:
+	var length: float = level.route_length()
+	for distance in [0.3, length * 0.25, length * 0.5, length * 0.75, length - 0.3]:
 		for action in ["move_left", "move_right", "move_up", "move_down"]:
 			alice.global_position = level.point_on_route(distance) + Vector3(0, 0.06, 0)
 			alice.velocity = Vector3.ZERO
@@ -101,7 +102,7 @@ func run() -> void:
 			if error > worst:
 				worst = error
 				worst_where = "%.1f 米处 %s" % [distance, action]
-	check(worst < level.PATH_HALF_WIDTH + 0.1, "全路线扫描不会走出路线（最大偏离 %.2f 米，%s）" % [worst, worst_where])
+	check(worst < level.path_half_width + 0.1, "全路线扫描不会走出路线（最大偏离 %.2f 米，%s）" % [worst, worst_where])
 
 	# 操作锁：对话期间不能移动，任务栏隐藏
 	manager.play("prologue_wake")

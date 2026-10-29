@@ -1,30 +1,48 @@
 extends Node3D
 class_name ForestLevel
-## 森林关卡组件：给建模组导出的 forest.glb 补上材质、灯光、环境和碰撞。
+## 森林关卡组件：按 data/forest.json 加载建模组导出的森林模型，并补上材质、灯光、环境和碰撞。
+## 换森林只需：把模型放进 assets/，改 data/forest.json（模型路径、缩放/偏移、layout.json、环境），不用改场景或代码。
 ## 逻辑复制自旧 demo 的 SpatialForest.gd / VolumeForest.gd，不继承它们，也不修改模型文件。
-## 子节点 ForestModel 必须是 forest.glb 的实例。
 
 ## 碰撞层：1 = 地面/树木/横木，2 = 路径两侧的隐形墙。
 const PATH_WALL_LAYER := 2
-const PATH_HALF_WIDTH := 1.15
+## 路径两侧隐形墙离路线中线的默认距离（米）；layout.json 的 path_half_width 可覆盖。
+const DEFAULT_PATH_HALF_WIDTH := 1.15
 
-@export var forest_assets := "res://assets/volume_forest/"
+const FOREST_CONFIG_PATH := "res://data/forest.json"
+## 旧森林的洞口两侧树墩与石碑（layout.json 没有 blockers 字段时沿用，保持旧地图行为不变）。
+const LEGACY_BLOCKERS := [
+	{"position": [6.9, 1.8, -6.8], "size": [1.6, 3.6, 1.6]},
+	{"position": [11.1, 1.8, -6.8], "size": [1.6, 3.6, 1.6]},
+	{"position": [6.8, 0.94, -5.0], "size": [0.85, 1.88, 0.48]},
+]
+
+@export var config_path := FOREST_CONFIG_PATH
+## 地面碰撞盒尺寸；forest.json 的 floor_size 可覆盖（要盖住整张地图）。
 @export var floor_size := Vector3(34, 0.1, 28)
 
+## data/forest.json 的内容与森林模型根节点（名字固定为 ForestModel）。
+var config: Dictionary
+var model: Node3D
 var layout: Dictionary
+var path_half_width := DEFAULT_PATH_HALF_WIDTH
 ## 路线点（地面高度 y=0），从入口到兔子洞。
 var route: Array[Vector3] = []
 var route_lengths: Array[float] = [0.0]
 
 func _ready() -> void:
-	layout = JSON.parse_string(FileAccess.get_file_as_string(forest_assets + "layout.json"))
+	config = JSON.parse_string(FileAccess.get_file_as_string(config_path))
+	layout = JSON.parse_string(FileAccess.get_file_as_string(config.layout))
 	for point: Array in layout.route: route.append(to_vector(point))
 	for i in range(1, route.size()):
 		route_lengths.append(route_lengths[-1] + route[i - 1].distance_to(route[i]))
-	fix_materials($ForestModel)
+	path_half_width = float(layout.get("path_half_width", DEFAULT_PATH_HALF_WIDTH))
+	if config.has("floor_size"): floor_size = to_vector(config.floor_size)
+	load_model()
+	if config.get("shader_folder", "") != "": fix_materials(model)
 	add_environment()
 	add_floor()
-	add_log_collision(layout.jump_obstacle)
+	if layout.has("jump_obstacle"): add_log_collision(layout.jump_obstacle)
 	add_tree_collisions()
 	add_path_walls()
 
@@ -56,45 +74,57 @@ func route_progress(point: Vector3) -> float:
 			distance = route_lengths[i] + route[i].distance_to(nearest)
 	return distance
 
-func fix_materials(model: Node) -> void:
-	for mesh: MeshInstance3D in model.find_children("*", "MeshInstance3D", true, false):
+## 按 forest.json 实例化森林模型：scale / offset（米，让路面落在 y=0）/ yaw_degrees 用来校正导出的单位与朝向。
+func load_model() -> void:
+	var packed: PackedScene = load(config.model)
+	model = packed.instantiate()
+	model.name = "ForestModel"
+	model.scale = Vector3.ONE * float(config.get("scale", 1.0))
+	model.position = to_vector(config.get("offset", [0, 0, 0]))
+	model.rotation_degrees.y = float(config.get("yaw_degrees", 0))
+	add_child(model)
+
+func fix_materials(root: Node) -> void:
+	var folder: String = config.shader_folder
+	for mesh: MeshInstance3D in root.find_children("*", "MeshInstance3D", true, false):
 		for surface in range(mesh.mesh.get_surface_count()):
 			var original := mesh.get_active_material(surface)
 			var has_colors: bool = mesh.mesh.surface_get_format(surface) & Mesh.ARRAY_FORMAT_COLOR != 0
 			# 导入器保留了顶点色但没有启用，地面需要用顶点色着色器还原调色。
 			if has_colors:
 				var painted := ShaderMaterial.new()
-				painted.shader = load(forest_assets + "painted_ground.gdshader")
+				painted.shader = load(folder + "painted_ground.gdshader")
 				mesh.set_surface_override_material(surface, painted)
 			elif original is StandardMaterial3D and ("MAT_void" in original.resource_name or ("05_Portal" in mesh.name and "MAT_crease" in original.resource_name)):
 				var dark := ShaderMaterial.new()
-				dark.shader = load(forest_assets + "portal_interior.gdshader")
+				dark.shader = load(folder + "portal_interior.gdshader")
 				mesh.set_surface_override_material(surface, dark)
 
 func add_environment() -> void:
+	var look: Dictionary = config.get("environment", {})
 	var world := WorldEnvironment.new()
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color("14232f")
+	env.background_color = Color(look.get("background_color", "14232f"))
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("86939d")
-	env.ambient_light_energy = 0.28
+	env.ambient_light_color = Color(look.get("ambient_color", "86939d"))
+	env.ambient_light_energy = float(look.get("ambient_energy", 0.28))
 	env.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	env.fog_enabled = true
-	env.fog_light_color = Color("233844")
-	env.fog_density = 0.009
+	env.fog_light_color = Color(look.get("fog_color", "233844"))
+	env.fog_density = float(look.get("fog_density", 0.009))
 	world.environment = env
 	add_child(world)
 	var moon := DirectionalLight3D.new()
 	moon.name = "Moonlight"
-	moon.rotation_degrees = Vector3(-55, -32, 0)
-	moon.light_color = Color("bac8d0")
-	moon.light_energy = 0.72
+	moon.rotation_degrees = to_vector(look.get("sun_rotation_degrees", [-55, -32, 0]))
+	moon.light_color = Color(look.get("sun_color", "bac8d0"))
+	moon.light_energy = float(look.get("sun_energy", 0.72))
 	moon.shadow_enabled = true
 	moon.shadow_blur = 2.0
 	moon.shadow_bias = 0.025
 	moon.shadow_normal_bias = 0.55
-	moon.directional_shadow_max_distance = 45
+	moon.directional_shadow_max_distance = float(look.get("shadow_max_distance", 45))
 	add_child(moon)
 	# 蘑菇（低处，蓝绿）与符文（高处，黄绿）的局部光源。
 	for point: Array in layout.get("sources", []):
@@ -141,7 +171,7 @@ func add_log_collision(data: Dictionary) -> void:
 func add_tree_collisions() -> void:
 	var body := StaticBody3D.new()
 	body.name = "TreesAndStandingStoneCollision"
-	for item: Dictionary in layout.tree_proxies:
+	for item: Dictionary in layout.get("tree_proxies", []):
 		var collision := CollisionShape3D.new()
 		var shape := CylinderShape3D.new()
 		shape.radius = float(item.radius)
@@ -149,13 +179,13 @@ func add_tree_collisions() -> void:
 		collision.shape = shape
 		collision.position = to_vector(item.position) + Vector3(0, shape.height * 0.5, 0)
 		body.add_child(collision)
-	# 洞口保持畅通，只有两侧的树墩和石碑阻挡。
-	for point: Vector3 in [Vector3(6.9, 1.8, -6.8), Vector3(11.1, 1.8, -6.8), Vector3(6.8, 0.94, -5)]:
+	# 洞口保持畅通，只有两侧的树墩和石碑阻挡（layout.json 的 blockers：位置 + 尺寸的方盒）。
+	for item: Dictionary in layout.get("blockers", LEGACY_BLOCKERS):
 		var collision := CollisionShape3D.new()
 		var shape := BoxShape3D.new()
-		shape.size = Vector3(1.6, 3.6, 1.6) if point.y > 1 else Vector3(0.85, 1.88, 0.48)
+		shape.size = to_vector(item.size)
 		collision.shape = shape
-		collision.position = point
+		collision.position = to_vector(item.position)
 		body.add_child(collision)
 	add_child(body)
 
@@ -175,7 +205,7 @@ func add_path_walls() -> void:
 			var shape := BoxShape3D.new()
 			shape.size = Vector3(0.12, 3, a.distance_to(b) + 0.08)
 			collision.shape = shape
-			collision.position = (a + b) * 0.5 + side * sign_value * PATH_HALF_WIDTH + Vector3(0, 1.5, 0)
+			collision.position = (a + b) * 0.5 + side * sign_value * path_half_width + Vector3(0, 1.5, 0)
 			collision.rotation.y = atan2(direction.x, direction.z)
 			body.add_child(collision)
 	# 路线两端封口：防止从起点往回走、或从终点走出地图（进洞由结尾动画完成）。
@@ -183,7 +213,7 @@ func add_path_walls() -> void:
 		var outward: Vector3 = end[1].direction_to(end[0])
 		var collision := CollisionShape3D.new()
 		var shape := BoxShape3D.new()
-		shape.size = Vector3(PATH_HALF_WIDTH * 2 + 0.2, 3, 0.12)
+		shape.size = Vector3(path_half_width * 2 + 0.2, 3, 0.12)
 		collision.shape = shape
 		collision.position = end[0] + outward * 0.3 + Vector3(0, 1.5, 0)
 		collision.rotation.y = atan2(outward.x, outward.z)

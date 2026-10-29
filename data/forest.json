@@ -1,0 +1,20 @@
+{
+	"model": "res://assets/new_background_original/Meshy_AI_Island_of_the_Great_T_1029150841_texture.fbx",
+	"scale": 1.5,
+	"offset": [0, -4.65, 0],
+	"floor_size": [48, 0.1, 44],
+	"yaw_degrees": -90,
+	"layout": "res://assets/new_forest/layout.json",
+	"shader_folder": "",
+	"environment": {
+		"background_color": "9fc4dc",
+		"ambient_color": "dfe8f0",
+		"ambient_energy": 0.75,
+		"fog_color": "b9d3e4",
+		"fog_density": 0.003,
+		"sun_color": "fff1d6",
+		"sun_energy": 1.05,
+		"sun_rotation_degrees": [-52, -35, 0],
+		"shadow_max_distance": 45
+	}
+}
